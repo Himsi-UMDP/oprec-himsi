@@ -1,69 +1,67 @@
-import { useState, useEffect } from "react";
 import { CgMenuRight, CgClose } from "react-icons/cg";
 import { navlink } from "@/constans";
+import { useNavbarScroll } from "@/hooks/useNavbar";
+import { useMobileNav } from "@/hooks/useMobile";
+import { cn } from "@/lib/utils";
 import NavMobile from "./NavMobile";
 
 const Navbar = () => {
-    const [bg, setBg] = useState(false);
-    const [mobileNav, setMobileNav] = useState(false);
-    useEffect(() => {
-        window.addEventListener("scroll", () => {
-            return window.scrollY > 50 ? setBg(true) : setBg(false);
-        });
-    });
+    const { hasScrolled } = useNavbarScroll();
+    const { isOpen, close, toggle } = useMobileNav();
 
     return (
-        <header
-            className={`${bg ? "bg-primary py-1 lg:py-2" : "bg-none"}
-            fixed left-0 z-50 w-full transition-all duration-200`}
-        >
-            <div className="container mx-auto">
-                <div className="flex justify-between items-center">
-                    <a href="#" className="w-auto">
-                        <h1
-                            className={`text-3xl ${
-                                bg ? "text-white" : "text-[#00405C]"
-                            } relative top-4`}
+        <nav className={cn(
+            "flex top-0 z-50 fixed w-full items-center justify-between py-4 transition-all duration-300",
+            hasScrolled
+                ? "bg-white/20 backdrop-blur-md shadow-md"
+                : "bg-transparent"
+        )}>
+            <div className="mx-4 md:mx-8 lg:mx-40 flex items-center justify-between w-full font-medium">
+
+                <a href="#" className="flex items-center gap-3">
+                    <img
+                        src="/icon.png"
+                        alt="Logo HIMSI"
+                        width={42}
+                        height={42}
+                        className="rounded-2xl"
+                    />
+                    <span className="hidden sm:inline text-foreground font-semibold hover:text-[#2464A8] transition-colors duration-300">
+                        HIMSI
+                    </span>
+                </a>
+
+                <div className="hidden md:flex gap-8 items-center font-semibold">
+                    {navlink.map((item, index) => (
+                        <a
+                            key={index}
+                            href={item.href}
+                            className="text-foreground hover:text-[#2464A8] transition-colors duration-300"
                         >
-                            HIMSI 
-                        </h1>
-                    </a>
-                    <div
-                        onClick={() => setMobileNav(!mobileNav)}
-                        className={`md:hidden text-2xl lg:text-3xl ${
-                            bg ? "text-white" : "text-[#00405C]"
-                        } cursor-pointer`}
-                    >
-                        {mobileNav ? <CgClose /> : <CgMenuRight />}
-                    </div>
-                    <nav className="hidden md:flex">
-                        <ul className="md:flex md:gap-x-12">
-                            {navlink.map((item, index) => {
-                                return (
-                                    <li key={index}>
-                                        <a
-                                            className={`capitalize hover:border-b transition-all ${
-                                                bg ? "text-white" : "text-[#00405C]"
-                                            }`}
-                                            href={item.href}
-                                            >
-                                            {item.name}
-                                        </a>
-                                    </li>
-                                );
-                            })}
-                        </ul>
-                    </nav>
-                    <div
-                        className={`${
-                            mobileNav ? "left-0" : "-left-full"
-                        } md:hidden fixed bottom-0 w-full max-w-xs h-screen transition-all`}
-                    >
-                        <NavMobile bg={bg} />
-                    </div>
+                            {item.name}
+                        </a>
+                    ))}
                 </div>
+
+                <button
+                    onClick={toggle}
+                    className="md:hidden p-2 rounded-lg hover:bg-white/10 transition-colors duration-300 text-foreground z-50 relative"
+                >
+                    {isOpen ? <CgClose size={24} /> : <CgMenuRight size={24} />}
+                </button>
+
+                <div className={cn(
+                    "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-start",
+                    "transition-all duration-300 md:hidden",
+                    isOpen
+                        ? "opacity-100 pointer-events-auto"
+                        : "opacity-0 pointer-events-none"
+                )}>
+                    <NavMobile onNavigate={close} />
+                </div>
+
             </div>
-        </header>
+        </nav>
     );
 };
 

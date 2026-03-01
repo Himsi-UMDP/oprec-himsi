@@ -4,9 +4,10 @@ export type NavItem = {
 };
 
 export type NavMobileProps = {
-    bg: boolean;
     onNavigate?: () => void;
 }
+
+export const SCROLL_THRESHOLD = 50;
 
 export const navlink = [
     {
