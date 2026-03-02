@@ -2,7 +2,9 @@ import './index.css'
 import Navbar from './components/Navbar'
 import Hero from './container/home/Hero'
 import Bidang from './container/bidang/Bidang'
-import ProkerSection from './container/proker/Proker'
+import Proker from './container/proker/Proker'
+import Timeline from './container/timeline/Timeline'
+import Faq from './container/faq/Faq'
 
 function App() {
 
@@ -11,7 +13,9 @@ function App() {
       <Navbar />
       <Hero />
       <Bidang />
-      <ProkerSection />
+      <Proker />
+      <Timeline />
+      <Faq />
     </>
   )
 }

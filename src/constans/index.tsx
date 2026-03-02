@@ -1,7 +1,11 @@
 import type { 
     Hero, 
     LogoConfig, 
-    NavItem 
+    NavItem,
+    Division,
+    Proker,
+    Timeline,
+    Faq, 
 } from "@/constans/type";
 import { 
     Code, 
@@ -10,7 +14,6 @@ import {
     Camera 
 } from "lucide-react";
 
-import type { Division } from "@/constans/type";
 import it1 from "@/assets/divisi/logo-litbang.png";
 import humas1 from "@/assets/divisi/logo-sosial.png";
 import sdm1 from "@/assets/divisi/logo-psdm.jpeg";
@@ -101,9 +104,8 @@ export const divisions: Division[] = [
     },
 ];
 
-import type { ProkerItem } from "./type";
 
-export const prokers: ProkerItem[] = [
+export const prokers: Proker[] = [
     {
         id: "ksi",
         images: [ksi],
@@ -121,5 +123,65 @@ export const prokers: ProkerItem[] = [
         images: [pkkmb],
         title: "PKKMB HIMSI",
         desc: "Memperkenalkan kehidupan kampus kepada mahasiswa baru terutama Mahasiswa Prodi Sistem Informasi.",
+    },
+];
+
+export const timeline: Timeline[] = [
+    {
+        id: "Pendaftaran Online",
+        date: "03 - 12 Maret 2026",
+        title: "Pembukaan Pendaftaran",
+        desc: "Isi formulir pendaftaran onlinedan upload berkas yang diperlukan.",
+    },
+    {
+        id: "wawancara",
+        date: "14 Maret 2026",
+        title: "Wawancara",
+        desc: "Sesi interview untuk mengenal lebih jauh tentang dirimu.",
+    },
+    {
+        id: "pengumuman",
+        date: "15 Maret 2026",
+        title: "Pengumuman",
+        desc: "Hasil seleksi akhir diumumkan melalui website dan media sosial.",
+    },
+    {
+        id: "onboarding",
+        date: "04 April 2026",
+        title: "Latihan Dasar Organisasi (LDO)",
+        desc: "Orientasi dan Pengenalan Oraganisasi untuk calon anggota baru.",
+    },
+];
+
+export const faqs: Faq[] = [
+    {
+        id: "siapa-boleh-daftar",
+        q: "Siapa saja yang boleh mendaftar?",
+        a: "Seluruh mahasiswa aktif dari semua jurusan dan angkatan diperbolehkan mendaftar. Tidak ada batasan khusus selama kamu memiliki semangat dan komitmen.",
+    },
+    {
+        id: "biaya-daftar",
+        q: "Apakah ada biaya pendaftaran?",
+        a: "Tidak ada biaya pendaftaran sama sekali. Proses seleksi sepenuhnya gratis.",
+    },
+    {
+        id: "lebih-dari-satu-divisi",
+        q: "Boleh mendaftar di lebih dari satu divisi?",
+        a: "Kamu bisa memilih hingga 2 pilihan divisi. Tim seleksi akan mempertimbangkan keduanya.",
+    },
+    {
+        id: "proses-seleksi",
+        q: "Bagaimana proses seleksinya?",
+        a: "Proses seleksi terdiri dari 3 tahap: seleksi berkas, wawancara, dan pengumuman akhir. Detail setiap tahap akan diinformasikan melalui email.",
+    },
+    {
+        id: "durasi-komitmen",
+        q: "Berapa lama komitmen yang dibutuhkan?",
+        a: "Masa kepengurusan berlangsung selama 1 tahun. Diharapkan anggota aktif mengikuti minimal 80% kegiatan yang diselenggarakan.",
+    },
+    {
+        id: "resign",
+        q: "Apakah bisa resign di tengah jalan?",
+        a: "Kami sangat menghargai komitmenmu. Namun jika ada kendala, kamu bisa berkonsultasi dengan koordinator divisi untuk mencari solusi terbaik.",
     },
 ];

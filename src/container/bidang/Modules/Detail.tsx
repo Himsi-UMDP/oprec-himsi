@@ -25,7 +25,7 @@ export default function Detail({
                 animate="visible"
                 exit="exit"
                 onClick={(e) => e.stopPropagation()}
-                className="card-gradient border border-border/50 rounded-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto"
+                className="border border-border/50 rounded-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto"
             >
                 <ImageCarousel
                     div={div}

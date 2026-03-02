@@ -64,9 +64,22 @@ export type ProkerListProps = {
 
 export type DetailModalProps = ImageCarouselProps;
 
-export type ProkerItem = {
+export type Proker = {
     id: string;
     images: string[];
     title: string;
     desc: string;
+};
+
+export type Timeline = {
+    id: string;
+    date: string;
+    title: string;
+    desc: string;
+};
+
+export type Faq = {
+    id: string;
+    q: string;
+    a: string;
 };

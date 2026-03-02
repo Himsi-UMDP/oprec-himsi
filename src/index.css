@@ -157,5 +157,17 @@
     -moz-border-radius: 14px;
     -ms-border-radius: 14px;
     -o-border-radius: 14px;
+  }
+
+  .glass-card-proker {
+    background: linear-gradient(        180deg,        rgba(255,255,255,0.82) 0%,        rgba(255,255,255,0.60) 100%      );
+    border: 1px solid rgba(7, 18, 39, 0.10);
+    box-shadow:      0 20px 80px rgba(7, 18, 39, 0.12),      inset 0 1px 0 rgba(255,255,255,0.65);
+    backdrop-filter: blur(28px) saturate(120%);
+    -webkit-backdrop-filter: blur(28px) saturate(120%);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
 }
 }

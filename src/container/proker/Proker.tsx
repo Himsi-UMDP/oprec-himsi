@@ -4,7 +4,7 @@ import { sectionVariants } from "./proker.variants";
 import { fadeUpItem } from "./proker.variants";
 import ProgramKerja from "./Modules/ProgramKerja";
 
-export default function ProkerSection() {
+const Proker = () => {
   return (
     <section id="proker" className="py-24 px-4">
       <div className="relative container mx-auto">
@@ -37,3 +37,5 @@ export default function ProkerSection() {
     </section>
   );
 }
+
+export default Proker;

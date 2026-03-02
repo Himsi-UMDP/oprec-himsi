@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
-import type { ProkerItem } from "@/constans/type";
+import type { Proker } from "@/constans/type";
 import { fadeUpItem } from "../proker.variants";
 
 type Props = {
-    item: ProkerItem;
+    item: Proker;
     index: number;
 };
 
@@ -15,7 +15,7 @@ export default function ProgramKerja({ item }: Props) {
             variants={fadeUpItem}
             whileHover={{ y: -6 }}
             transition={{ duration: 0.25 }}
-            className="group overflow-hidden rounded-2xl border border-border/50 bg-card shadow-sm hover:shadow-xl hover:border-primary/30 transition-all"
+            className="group overflow-hidden rounded-2xl border border-border/50 bg-card shadow-sm hover:shadow-xl hover:border-[#5a9fd4] transition-all"
         >
             <div className="h-52 w-full overflow-hidden bg-primary/5">
                 {cover ? (
