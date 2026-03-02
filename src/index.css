@@ -133,3 +133,17 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .bg-himsi-hero{
+    position: relative;
+    overflow: hidden;
+
+    background:
+      linear-gradient(90deg,
+        #EAF3FF 0%,
+        #FFFFFF 48%,
+        #FFF2D8 100%
+      );
+  }
+}

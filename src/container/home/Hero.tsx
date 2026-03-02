@@ -2,64 +2,88 @@ import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { hero } from "@/constans";
+import {
+    containerVariants,
+    itemVariants,
+    badgeVariants,
+    blobTransition,
+} from "./HeroAnimasi";
+
+
+const AmbientBlob = ({ className, delay = 0 }: { className: string; delay?: number }) => (
+    <motion.div
+        className={`absolute rounded-full blur-3xl ${className}`}
+        animate={{ y: [0, -24, 0], scale: [1, 1.05, 1] }}
+        transition={{ ...blobTransition, delay }}
+    />
+);
+
 
 const Hero = () => {
+    const { badge, headingMain, headingAccent, description, primaryCTA, secondaryCTA } = hero;
+
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-            <div className="absolute top-1/4 left-1/4 w-72 h-72 rounded-full bg-primary/5 blur-3xl animate-float" />
-            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-primary/5 blur-3xl animate-float" style={{ animationDelay: "1.5s" }} />
+        <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-himsi-hero">
 
-            <div className="container relative z-10 text-center px-4">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                        className="space-y-6"
+            <AmbientBlob className="top-1/4 left-1/4 w-72 h-72 bg-primary/5" delay={0} />
+            <AmbientBlob className="bottom-1/4 right-1/4 w-96 h-96 bg-primary/8" delay={1.5} />
+            <AmbientBlob className="top-1/2 left-1/2 w-60 h-60 bg-primary/3" delay={3} />
+
+            <motion.div
+                className="container relative z-10 text-center px-4 space-y-6"
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+            >
+                <motion.div
+                    animate={badgeVariants}
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full border outline border-white/20 bg-white/10 backdrop-blur-md shadow-[inset_0_1px_1px_rgba(255,255,255,0.15),0_4px_24px_rgba(0,0,0,0.1)]"
+                >
+                    <Sparkles className="w-4 h-4 text-primary" />
+                    <span className="text-sm font-medium text-primary">{badge}</span>
+                </motion.div>
+
+                <motion.h1
+                    animate={itemVariants}
+                    className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight"
+                >
+                    <span
+                        className="bg-clip-text text-transparent"
+                        style={{ backgroundImage: "linear-gradient(90deg, #f0c96a 0%, #d3a32d 40%, #5a9fd4 70%)" }}
                     >
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 0.2 }}
-                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5"
-                        >
-                            <Sparkles className="w-4 h-4 text-primary" />
-                            <span className="text-sm font-medium text-primary">Open Recruitment HIMSI UMDP 2026</span>
-                        </motion.div>
+                        {headingMain}
+                    </span>
+                    <br />
+                    <span
+                        className="bg-clip-text text-transparent"
+                        style={{ backgroundImage: "linear-gradient(90deg, #f0c96a 0%, #d3a32d 40%, #5a9fd4 70%)" }}
+                    >
+                        {headingAccent}
+                    </span>
+                </motion.h1>
 
-                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight">
-                            <span className="text-foreground">Bergabung</span>
-                            <br />
-                            <span className="text-gradient">Bersama Kami</span>
-                        </h1>
-
-                        <p className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground leading-relaxed">
-                            Temukan potensimu, kembangkan skill, dan jadilah bagian dari perubahan.
-                            Waktunya buat langkah baru!
-                        </p>
-
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.6 }}
-                            className="flex flex-col sm:flex-row gap-4 justify-center pt-4"
-                        >
-                            <Button size="lg" className="text-lg px-8 py-6 glow animate-pulse-glow" asChild>
-                                <Link to="/daftar">Daftar Sekarang</Link>
-                            </Button>
-                            <Button variant="outline" size="lg" className="text-lg px-8 py-6 border-primary/30 hover:bg-primary/10">
-                                Pelajari Lebih Lanjut
-                            </Button>
-                        </motion.div>
-                    </motion.div>
+                <motion.p
+                    animate={itemVariants}
+                    className="max-w-2xl font-semibold mx-auto text-lg md:text-xl text-foreground leading-relaxed"
+                >
+                    {description}
+                </motion.p>
 
                 <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1.2 }}
-                    className="absolute bottom-8 left-1/2 -translate-x-1/2"
+                    animate={itemVariants}
+                    className="flex flex-col sm:flex-row gap-4 justify-center pt-4"
                 >
+                    <Button size="lg" className="text-lg px-8 py-6 glow animate-pulse-glow" asChild>
+                        <Link to={primaryCTA.href}>{primaryCTA.label}</Link>
+                    </Button>
+                    <Button variant="outline" size="lg" className="text-lg px-8 py-6 border-primary/30 hover:bg-primary/10" asChild>
+                        <Link to={secondaryCTA.href}>{secondaryCTA.label}</Link>
+                    </Button>
                 </motion.div>
-            </div>
+            </motion.div>
+
         </section>
     );
 };
