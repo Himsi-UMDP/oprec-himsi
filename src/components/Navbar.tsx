@@ -1,5 +1,5 @@
 import { CgMenuRight, CgClose } from "react-icons/cg";
-import { navlink } from "@/constans";
+import { navlink, logoConfig } from "@/constans";
 import { useNavbarScroll } from "@/hooks/useNavbar";
 import { useMobileNav } from "@/hooks/useMobile";
 import { cn } from "@/lib/utils";
@@ -20,14 +20,14 @@ const Navbar = () => {
 
                 <a href="#" className="flex items-center gap-3">
                     <img
-                        src="/icon.png"
-                        alt="Logo HIMSI"
-                        width={42}
-                        height={42}
+                        src={logoConfig.src}
+                        alt={logoConfig.alt}
+                        width={logoConfig.width}
+                        height={logoConfig.height}
                         className="rounded-2xl"
                     />
                     <span className="hidden sm:inline text-foreground font-semibold hover:text-[#2464A8] transition-colors duration-300">
-                        HIMSI
+                        {logoConfig.label}
                     </span>
                 </a>
 
