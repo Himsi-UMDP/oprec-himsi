@@ -10,14 +10,22 @@ const DivisiSection = () => {
         useDivisi();
 
     return (
-        <section id="divisi" className="py-24 px-4">
+        <section className="py-24 px-4">
+            <div className="mb-4">
+                <h2 className="text-3xl md:text-4xl font-bold text-center mb-2 text-foreground">
+                    Bidang & Divisi
+                </h2>
+                <p className="text-center text-muted-foreground max-w-2xl mx-auto">
+                    Bidang dan divisi di HIMSI yang siap mengembangkan potensi dan bakatmu
+                </p>
+            </div>
             <div className="container mx-auto flex flex-col items-center">
                 <motion.div
                     variants={sectionVariants}
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: true }}
-                    className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-2xl mx-auto justify-items-center"
+                    className="grid grid-cols-1 sm:grid-cols-4 gap-10 w-full mx-auto justify-items-center"
                 >
                     {divisions.map((d, i) => (
                         <DivisionCard

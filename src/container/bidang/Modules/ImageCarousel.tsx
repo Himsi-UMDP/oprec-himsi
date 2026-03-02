@@ -3,12 +3,12 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import type { ImageCarouselProps } from "@/constans/type";
 
 export default function ImageCarousel({
-  div,
-  imgIndex,
-  setImgIndex,
-  onClose,
+    div,
+    imgIndex,
+    setImgIndex,
+    onClose,
 }: ImageCarouselProps) {
-  const images = div.images ?? [];
+    const images = div.images ?? [];
     const hasImages = images.length > 0;
     const hasMany = images.length > 1;
 
@@ -60,10 +60,10 @@ export default function ImageCarousel({
             </Button>
 
             <div className="absolute bottom-4 left-6 flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl bg-primary/20 backdrop-blur-sm flex items-center justify-center">
+                <div className="w-20 h-13 rounded-xl bg-primary/20 backdrop-blur-sm flex items-center justify-center">
                     <div.icon className="w-6 h-6 text-primary" />
                 </div>
-                <div>
+                <div className="">
                     <h3 className="text-2xl font-bold text-foreground">{div.name}</h3>
                     <p className="text-muted-foreground text-sm">{div.desc}</p>
                 </div>

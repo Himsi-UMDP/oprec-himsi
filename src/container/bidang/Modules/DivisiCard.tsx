@@ -7,7 +7,7 @@ const DivisiCard = ({ d, onClick }: DivisionCardProps) => {
         <motion.div
             variants={cardVariants}
             onClick={onClick}
-            className="card-gradient rounded-xl overflow-hidden border border-border/50 hover:border-primary/40 transition-all duration-300 group cursor-pointer flex flex-col items-center text-center"
+            className="glass-card rounded-xl overflow-hidden border border-border/50 hover:border-primary/40 transition-all duration-300 group cursor-pointer flex flex-col items-center text-center"
         >
             <div className="w-full aspect-square overflow-hidden">
                 <img
@@ -25,10 +25,10 @@ const DivisiCard = ({ d, onClick }: DivisionCardProps) => {
                     <h3 className="text-xl font-semibold text-foreground">{d.name}</h3>
                 </div>
 
-                <p className="text-muted-foreground leading-relaxed text-sm">{d.desc}</p>
+                {/* <p className="text-muted-foreground leading-relaxed text-sm">{d.desc}</p> */}
 
                 <p className="text-primary text-sm mt-3 font-medium group-hover:underline">
-                    Lihat Divisi →
+                    Lihat Bidang →
                 </p>
             </div>
         </motion.div>
