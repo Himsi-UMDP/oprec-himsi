@@ -15,6 +15,9 @@ import it1 from "@/assets/divisi/logo-litbang.png";
 import humas1 from "@/assets/divisi/logo-sosial.png";
 import sdm1 from "@/assets/divisi/logo-psdm.jpeg";
 import dokumentasi1 from "@/assets/divisi/logo-kominfo.jpeg";
+import ksi from "@/assets/proker/ksi.jpg";
+import trikologi from "@/assets/proker/trikologi.png";
+import pkkmb from "@/assets/proker/pkkmb.png";
 
 
 export const SCROLL_THRESHOLD = 50;
@@ -95,5 +98,28 @@ export const divisions: Division[] = [
             { title: "Kreatif", desc: "Mendesain konten visual dan branding agar identitas HIMSI kuat dan menarik di berbagai media." },
             { title: "Dokumentasi", desc: "Mendokumentasikan kegiatan dalam bentuk foto/video sebagai arsip dan bahan publikasi organisasi." },
         ],
+    },
+];
+
+import type { ProkerItem } from "./type";
+
+export const prokers: ProkerItem[] = [
+    {
+        id: "ksi",
+        images: [ksi],
+        title: "Kampung Sistem Informasi (KSI)",
+        desc: "Meningkatan solidaritas dan kebersamaan antar mahasiswa Sistem Informasi.",
+    },
+    {
+        id: "trikologi",
+        images: [trikologi],
+        title: "TRIKOLOGI",
+        desc: "Tips and Trik seputar Pemrograman dan Teknologi untuk meningkatkan kompetensi anggota.",
+    },
+    {
+        id: "pkkmb-himsi",
+        images: [pkkmb],
+        title: "PKKMB HIMSI",
+        desc: "Memperkenalkan kehidupan kampus kepada mahasiswa baru terutama Mahasiswa Prodi Sistem Informasi.",
     },
 ];
