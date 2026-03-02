@@ -22,10 +22,10 @@ export default function FaqAccordion({ items }: Props) {
                         value={faq.id}
                         className="glass-card rounded-xl border border-border/50 px-6 data-[state=open]:border-[#5a9fd4] transition-colors"
                     >
-                        <AccordionTrigger className="text-left text-foreground font-semibold  hover:text-primary hover:no-underline py-5">
+                        <AccordionTrigger className="text-left text-foreground font-semibold hover:text-primary hover:no-underline py-5">
                             {faq.q}
                         </AccordionTrigger>
-                        <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">
+                        <AccordionContent className="text-muted-foreground font-semibold pb-5 leading-relaxed">
                             {faq.a}
                         </AccordionContent>
                     </AccordionItem>

@@ -8,8 +8,8 @@ export const containerVariants = {
     },
     exit: {
         opacity: 0,
-        y: -20,
-        transition: { staggerChildren: 0.08, staggerDirection: -1 },
+        y: -30,
+        transition: { staggerChildren: 0.08, staggerDirection: -1, duration: 0.4 },
     },
 } satisfies Variants;
 

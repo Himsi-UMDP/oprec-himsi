@@ -156,32 +156,22 @@ export const timeline: Timeline[] = [
 export const faqs: Faq[] = [
     {
         id: "siapa-boleh-daftar",
-        q: "Siapa saja yang boleh mendaftar?",
-        a: "Seluruh mahasiswa aktif dari semua jurusan dan angkatan diperbolehkan mendaftar. Tidak ada batasan khusus selama kamu memiliki semangat dan komitmen.",
+        q: "Siapa saja yang boleh mendaftar Open Recruitment HIMSI?",
+        a: "Mahasiswa aktif minimal semester 2 dan maksimal semester 4 diperbolehkan mendaftar. Pastikan siap mengikuti rangkaian seleksi sampai selesai.",
     },
     {
-        id: "biaya-daftar",
-        q: "Apakah ada biaya pendaftaran?",
-        a: "Tidak ada biaya pendaftaran sama sekali. Proses seleksi sepenuhnya gratis.",
-    },
-    {
-        id: "lebih-dari-satu-divisi",
-        q: "Boleh mendaftar di lebih dari satu divisi?",
-        a: "Kamu bisa memilih hingga 2 pilihan divisi. Tim seleksi akan mempertimbangkan keduanya.",
+        id: "syarat-berkas",
+        q: "Apa saja syarat dan berkas yang perlu disiapkan?",
+        a: "Siapkan data diri sesuai form pendaftaran dan berkas pendukung yang diminta. Pastikan semua informasi diisi lengkap dan benar agar lolos tahap seleksi berkas.",
     },
     {
         id: "proses-seleksi",
-        q: "Bagaimana proses seleksinya?",
-        a: "Proses seleksi terdiri dari 3 tahap: seleksi berkas, wawancara, dan pengumuman akhir. Detail setiap tahap akan diinformasikan melalui email.",
+        q: "Bagaimana proses seleksi Open Recruitment HIMSI?",
+        a: "Proses seleksi terdiri dari 3 tahap: seleksi berkas, wawancara (sekalian pada tahap berikutnya), dan pengumuman akhir. Detail informasi tiap tahap akan dikirimkan melalui WAG.",
     },
     {
-        id: "durasi-komitmen",
-        q: "Berapa lama komitmen yang dibutuhkan?",
-        a: "Masa kepengurusan berlangsung selama 1 tahun. Diharapkan anggota aktif mengikuti minimal 80% kegiatan yang diselenggarakan.",
-    },
-    {
-        id: "resign",
-        q: "Apakah bisa resign di tengah jalan?",
-        a: "Kami sangat menghargai komitmenmu. Namun jika ada kendala, kamu bisa berkonsultasi dengan koordinator divisi untuk mencari solusi terbaik.",
+        id: "pengumuman-informasi",
+        q: "Informasi dan pengumuman seleksi dikirim melalui apa?",
+        a: "Seluruh informasi, jadwal, dan pengumuman akan disampaikan melalui WAG. Pastikan nomor yang kamu daftarkan aktif dan bisa dihubungi.",
     },
 ];
