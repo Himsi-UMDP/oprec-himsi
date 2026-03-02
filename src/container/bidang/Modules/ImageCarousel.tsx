@@ -2,14 +2,13 @@ import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import type { ImageCarouselProps } from "@/constans/type";
 
-
 export default function ImageCarousel({
-    div,
-    imgIndex,
-    setImgIndex,
-    onClose,
+  div,
+  imgIndex,
+  setImgIndex,
+  onClose,
 }: ImageCarouselProps) {
-    const images = div.images ?? [];
+  const images = div.images ?? [];
     const hasImages = images.length > 0;
     const hasMany = images.length > 1;
 
@@ -20,9 +19,9 @@ export default function ImageCarousel({
                     src={images[imgIndex] ?? images[0]}
                     alt={div.name}
                     className="w-full h-full object-cover"
-                />
-            ) : (
-                <div className="w-full h-full bg-muted flex items-center justify-center text-muted-foreground">
+                    />
+                ) : (
+                    <div className="w-full h-full bg-muted flex items-center justify-center text-muted-foreground">
                     Tidak ada gambar
                 </div>
             )}
@@ -34,9 +33,7 @@ export default function ImageCarousel({
                     <Button
                         type="button"
                         aria-label="Sebelumnya"
-                        onClick={() =>
-                            setImgIndex((p) => (p - 1 + images.length) % images.length)
-                        }
+                        onClick={() => setImgIndex((p) => (p - 1 + images.length) % images.length)}
                         className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full glass flex items-center justify-center text-foreground hover:bg-primary/20 transition-colors"
                     >
                         <ChevronLeft className="w-5 h-5" />
