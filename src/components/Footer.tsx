@@ -1,22 +1,62 @@
-import { Instagram, Mail, MessageCircle } from "lucide-react";
+import { Instagram, Mail, Linkedin } from "lucide-react";
+import { navlink } from "@/constans"; // pastikan path ini sesuai project kamu
 
 const Footer = () => {
     return (
         <footer className="border-t border-border/50 py-12 px-4">
-            <div className="container flex flex-col md:flex-row items-center justify-between gap-6">
-                <div>
-                    <span className="font-display text-lg font-bold text-gradient">OPREC 2026</span>
-                    <p className="text-sm text-muted-foreground mt-1">© 2026 All rights reserved.</p>
+            <div className="container mx-auto flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+                <div className="shrink-0 text-center md:text-left">
+                    <h2 className="text-3xl md:text-3xl font-bold text-center mb-2 text-[#5a9fd4]">
+                        Oprec
+                        <span className="text-[#d3a32d]"> 2026</span>
+                    </h2>
+                    <p className="text-sm text-foreground mt-1">
+                        © 2026 All rights reserved.
+                    </p>
                 </div>
-                <div className="flex gap-4">
-                    <a href="#" className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors">
+
+                <nav
+                    aria-label="Footer navigation"
+                    className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm"
+                >
+                    {navlink.map((item) => (
+                        <a
+                            key={item.href}
+                            href={item.href}
+                            className="text-foreground hover:text-[#2464A8] font-semibold transition-colors"
+                        >
+                            {item.name}
+                        </a>
+                    ))}
+                </nav>
+
+                <div className="flex justify-center gap-4 md:justify-end">
+                    <a
+                        href="https://www.instagram.com/himsi.umdp/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-foreground hover:text-[#2464A8] border hover:border-[#2464A8] transition-colors"
+                        aria-label="Instagram HIMSI UMDP"
+                    >
                         <Instagram className="w-5 h-5" />
                     </a>
-                    <a href="#" className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors">
+
+                    <a
+                        href="mailto:himsi@mhs.mdp.ac.id"
+                        className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-foreground hover:text-[#2464A8] border hover:border-[#2464A8] transition-colors"
+                        aria-label="Email HIMSI UMDP"
+                    >
                         <Mail className="w-5 h-5" />
                     </a>
-                    <a href="#" className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors">
-                        <MessageCircle className="w-5 h-5" />
+
+                    <a
+                        href="https://www.linkedin.com/company/himpunan-mahasiswa-sistem-informasi-universitas-multi-data-palembang/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-foreground hover:text-[#2464A8] border hover:border-[#2464A8] transition-colors"
+                        aria-label="LinkedIn HIMSI UMDP"
+                    >
+                        <Linkedin className="w-5 h-5" />
                     </a>
                 </div>
             </div>
