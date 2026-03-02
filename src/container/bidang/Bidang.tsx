@@ -11,7 +11,10 @@ const Divisi = () => {
         useDivisi();
 
     return (
-        <section className="py-24 px-4">
+        <section 
+            id="bidang"
+            className="py-24 px-4"
+        >
             <Animated
                 variants={{
                     hidden: { opacity: 0, y: 20 },

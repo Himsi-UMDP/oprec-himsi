@@ -4,6 +4,7 @@ import { useNavbarScroll } from "@/hooks/useNavbar";
 import { useMobileNav } from "@/hooks/useMobile";
 import { cn } from "@/lib/utils";
 import NavMobile from "./NavMobile";
+import { Button } from "./ui/button";
 
 const Navbar = () => {
     const { hasScrolled } = useNavbarScroll();
@@ -42,6 +43,10 @@ const Navbar = () => {
                         </a>
                     ))}
                 </div>
+
+                <Button asChild className="hidden md:flex ml-2">
+                    <a href="#daftar">Daftar</a>
+                </Button>
 
                 <button
                     onClick={toggle}

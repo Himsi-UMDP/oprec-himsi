@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -7,35 +8,22 @@ import {
     containerVariants,
     itemVariants,
     badgeVariants,
-    // blobTransition,
 } from "./hero.variants";
-
-
-// const AmbientBlob = ({ className, delay = 0 }: { className: string; delay?: number }) => (
-//     <motion.div
-//         className={`absolute rounded-full blur-3xl ${className}`}
-//         animate={{ y: [0, -24, 0], scale: [1, 1.05, 1] }}
-//         transition={{ ...blobTransition, delay }}
-//     />
-// );
-
 
 const Hero = () => {
     const { badge, headingMain, headingAccent, description, primaryCTA, secondaryCTA } = hero;
 
+    const ref = useRef<HTMLDivElement>(null);
+    const isInView = useInView(ref, { amount: 0.2, once: false });
+
     return (
         <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-himsi-hero">
-
-            {/* <AmbientBlob className="top-1/4 left-1/4 w-72 h-72 bg-primary/5" delay={0} />
-            <AmbientBlob className="bottom-1/4 right-1/4 w-96 h-96 bg-primary/8" delay={1.5} />
-            <AmbientBlob className="top-1/2 left-1/2 w-60 h-60 bg-primary/3" delay={3} /> */}
-
             <motion.div
+                ref={ref}
                 className="container relative z-10 text-center px-4 space-y-6"
                 variants={containerVariants}
                 initial="hidden"
-                animate="visible"
-                exit="exit"
+                animate={isInView ? "visible" : "exit"}
             >
                 <motion.div
                     variants={badgeVariants}
@@ -83,7 +71,6 @@ const Hero = () => {
                     </Button>
                 </motion.div>
             </motion.div>
-
         </section>
     );
 };

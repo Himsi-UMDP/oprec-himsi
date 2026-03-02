@@ -28,7 +28,7 @@ export const SCROLL_THRESHOLD = 50;
 export const navlink: NavItem[] = [
     { name: "Home", href: "#home" },
     { name: "Pengumuman", href: "#pengumuman" },
-    { name: "Kontak", href: "#kontak" },
+    { name: "Bidang", href: "#bidang" },
 ];
 
 export const logoConfig: LogoConfig = {
@@ -50,8 +50,8 @@ export const hero: Hero = {
         href: "/daftar",
     },
     secondaryCTA: {
-        label: "Pelajari Lebih Lanjut",
-        href: "#tentang",
+        label: "Guide Book",
+        href: "https://drive.google.com/drive/folders/1RD7Dgv-YCoNhrEy7L6HaAweZn__ZU1lL",
     },
 };
 
