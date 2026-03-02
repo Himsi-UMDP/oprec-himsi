@@ -1,3 +1,5 @@
+import type { ElementType, Dispatch, SetStateAction } from "react";
+
 export type NavItem = {
     name: string;
     href: string;
@@ -29,3 +31,35 @@ export type Hero = {
         href: string;
     };
 };
+
+export type Divisi = {
+    title: string;
+    desc: string;
+};
+
+export type Division = {
+    id: string;              
+    icon: ElementType;       
+    name: string;
+    desc: string;
+    images?: string[];       
+    divisi?: Divisi[];
+};
+
+export type DivisionCardProps = {
+    d: Division;
+    onClick: () => void;
+};
+
+export type ImageCarouselProps = {
+    div: Division;
+    imgIndex: number;
+    setImgIndex: Dispatch<SetStateAction<number>>;
+    onClose: () => void;
+};
+
+export type ProkerListProps = {
+    div: Division;
+};
+
+export type DetailModalProps = ImageCarouselProps;
