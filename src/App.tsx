@@ -6,6 +6,7 @@ import Proker from './container/proker/Proker'
 import Timeline from './container/timeline/Timeline'
 import Faq from './container/faq/Faq'
 import Footer from './components/Footer'
+import Oprec from './container/pendaftaran/Oprec'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
       <Bidang />
       <Proker />
       <Timeline />
+      <Oprec />
       <Faq />
       <Footer />
     </>
