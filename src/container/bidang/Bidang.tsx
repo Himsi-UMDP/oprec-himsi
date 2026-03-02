@@ -12,10 +12,12 @@ const DivisiSection = () => {
     return (
         <section className="py-24 px-4">
             <div className="mb-4">
-                <h2 className="text-3xl md:text-4xl font-bold text-center mb-2 text-foreground">
-                    Bidang & Divisi
+                <h2 className="text-3xl md:text-4xl font-bold text-center mb-2 text-[#5a9fd4]">
+                    Bidang 
+                    <span className="text-foreground"> &</span>
+                    <span className="text-[#d3a32d]"> Divisi</span>
                 </h2>
-                <p className="text-center text-muted-foreground max-w-2xl mx-auto">
+                <p className="text-center text-foreground max-w-2xl mx-auto">
                     Bidang dan divisi di HIMSI yang siap mengembangkan potensi dan bakatmu
                 </p>
             </div>
