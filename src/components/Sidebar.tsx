@@ -1,19 +1,21 @@
 import { useNavigate } from "react-router-dom";
-import { LayoutDashboard, Users, CheckCircle2, LogOut } from "lucide-react";
+import { LayoutDashboard, Users, CheckCircle2, LogOut, ClipboardList } from "lucide-react";
 
-type ActivePage = "dashboard" | "pendaftar" | "diterima";
+type ActivePage = "dashboard" | "pendaftar" | "diterima" | "wawancara";
 type Props = { onLogout: () => void; activePage?: ActivePage };
 
 const NAV_ITEMS = [
   { id: "dashboard" as ActivePage, label: "Dashboard", href: "/admin/dashboard" },
   { id: "pendaftar" as ActivePage, label: "Pendaftar", href: "/admin/pendaftar" },
   { id: "diterima"  as ActivePage, label: "Diterima",  href: "/admin/diterima"  },
+  { id: "wawancara" as ActivePage, label: "Wawancara", href: "/admin/wawancara" },
 ];
 
 const NAV_ICONS: Record<ActivePage, React.ReactNode> = {
   dashboard: <LayoutDashboard className="w-[18px] h-[18px]" />,
   pendaftar: <Users           className="w-[18px] h-[18px]" />,
   diterima:  <CheckCircle2    className="w-[18px] h-[18px]" />,
+  wawancara: <ClipboardList className="w-[18px] h-[18px]" />,
 };
 
 export default function Sidebar({ onLogout, activePage = "dashboard" }: Props) {

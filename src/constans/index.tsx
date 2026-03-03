@@ -234,6 +234,7 @@ export const STAT_CARD_CONFIG = [
     { key: "total"    as const, label: "Pendaftar Total",    iconBg: "bg-blue-100",   iconColor: "text-blue-500",   emoji: "👥" },
     { key: "diterima" as const, label: "Pendaftar Diterima", iconBg: "bg-green-100",  iconColor: "text-green-500",  emoji: "✅" },
     { key: "selesai"  as const, label: "Selesai Wawancara",  iconBg: "bg-blue-100",   iconColor: "text-blue-500",   emoji: "🔷" },
+    { key: "pending"  as const, label: "Menunggu Review",    iconBg: "bg-yellow-100", iconColor: "text-yellow-500", emoji: "⏳" },
 ];
 
 export const TABLE_HEADERS = ["No","Nama","NPM","Angkatan","Bidang 1","Bidang 2","Alasan","Status","CV","Aksi"];

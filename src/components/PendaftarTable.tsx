@@ -71,7 +71,10 @@ function ClickableCell({ text, onOpen }: { text: string; onOpen: () => void }) {
 }
 
 function StatusBadge({ status }: { status: PendaftaranRow["status"] }) {
-  const cfg = STATUS_CONFIG[status];
+  const cfg = STATUS_CONFIG[status] ?? {
+    label: status ?? "—",
+    className: "bg-gray-100 text-gray-500 border border-gray-200",
+  };
   return (
     <span className={`inline-block rounded-full text-xs font-bold px-2.5 py-0.5 ${cfg.className}`}>
       {cfg.label}
