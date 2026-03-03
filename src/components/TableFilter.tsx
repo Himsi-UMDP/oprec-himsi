@@ -48,7 +48,7 @@ export default function TableFilter({
                     { value: "semua",    label: "Semua Status" },
                     { value: "pending",  label: "⏳ Pending"   },
                     { value: "diterima", label: "✅ Diterima"  },
-                    { value: "ditolak",  label: "❌ Ditolak"   },
+                    { value: "selesai",  label: "❌ Selesai"   },
                 ]}
             />
 

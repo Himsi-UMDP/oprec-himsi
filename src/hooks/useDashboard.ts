@@ -41,7 +41,7 @@ export function useDashboard() {
   const stats = useMemo((): DashboardStats => ({
     total:    data.length,
     diterima: data.filter(d => d.status === "diterima").length,
-    ditolak:  data.filter(d => d.status === "ditolak").length,
+    selesai:  data.filter(d => d.status === "selesai").length,
     pending:  data.filter(d => d.status === "pending").length,
     perBidang: BIDANG_CONFIG.map(b => ({
       name:  b.name,

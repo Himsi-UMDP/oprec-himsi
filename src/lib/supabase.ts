@@ -21,7 +21,7 @@ export type PendaftaranRow = {
     bidang2: string
     cv_url: string | null
     alasan: string
-    status: 'pending' | 'diterima' | 'ditolak'
+    status: 'diterima' | 'selesai' | 'pending'
 }
 
 export type PendaftaranInsert = Omit<PendaftaranRow, 'id' | 'created_at' | 'status'>

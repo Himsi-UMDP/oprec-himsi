@@ -227,13 +227,12 @@ export const BIDANG_CONFIG = [
 export const STATUS_CONFIG: Record<PendaftaranRow["status"], { label: string; className: string }> = {
     pending:  { label: "Pending",  className: "bg-yellow-100 text-yellow-700 border border-yellow-200" },
     diterima: { label: "Diterima", className: "bg-green-100 text-green-700 border border-green-200"   },
-    selesai:  { label: "Selesai",  className: "bg-blue-100 text-blue-700 border border-blue-200"         },
+    selesai:  { label: "Selesai",  className: "bg-blue-100 text-blue-700 border border-blue-200"      },
 };
 
 export const STAT_CARD_CONFIG = [
     { key: "total"    as const, label: "Pendaftar Total",    iconBg: "bg-blue-100",   iconColor: "text-blue-500",   emoji: "👥" },
     { key: "diterima" as const, label: "Pendaftar Diterima", iconBg: "bg-green-100",  iconColor: "text-green-500",  emoji: "✅" },
-    { key: "pending"  as const, label: "Menunggu Review",    iconBg: "bg-yellow-100", iconColor: "text-yellow-500", emoji: "⏳" },
     { key: "selesai"  as const, label: "Selesai Wawancara",  iconBg: "bg-blue-100",   iconColor: "text-blue-500",   emoji: "🔷" },
 ];
 

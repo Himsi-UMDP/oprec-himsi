@@ -86,8 +86,8 @@ function ActionButtons({ row, updatingId, onStatusChange }: {
   const isLoading = updatingId === row.id;
   const buttons = [
     { status: "diterima" as const, label: "✓", activeClass: "bg-green-500 text-white",  idleClass: "bg-green-50 text-green-600 hover:bg-green-100"   },
-    { status: "ditolak"  as const, label: "✕", activeClass: "bg-red-500 text-white",    idleClass: "bg-red-50 text-red-600 hover:bg-red-100"           },
-    { status: "pending"  as const, label: "?", activeClass: "bg-yellow-400 text-white", idleClass: "bg-yellow-50 text-yellow-600 hover:bg-yellow-100"  },
+    { status: "selesai"  as const, label: "✓", activeClass: "bg-blue-500 text-white", idleClass: "bg-blue-50 text-blue-600 hover:bg-blue-100"           },
+    { status: "pending"  as const, label: "?", activeClass: "bg-yellow-500 text-white", idleClass: "bg-yellow-50 text-yellow-600 hover:bg-yellow-100"  },
   ];
   return (
     <div className="flex items-center gap-1">

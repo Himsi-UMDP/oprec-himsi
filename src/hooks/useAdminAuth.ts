@@ -9,7 +9,6 @@ export function useAdminAuth() {
   const [state, setState] = useState<AuthState>("loading");
 
   useEffect(() => {
-    // Cek session saat ini
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (!session) {
         setState("unauthenticated");
@@ -17,7 +16,6 @@ export function useAdminAuth() {
         return;
       }
 
-      // Verifikasi apakah ada di tabel admins
       supabase
         .from("admins")
         .select("email")
@@ -34,7 +32,6 @@ export function useAdminAuth() {
         });
     });
 
-    // Subscribe perubahan auth
     const { data: listener } = supabase.auth.onAuthStateChange(
       (_event, session) => {
         if (!session) {
