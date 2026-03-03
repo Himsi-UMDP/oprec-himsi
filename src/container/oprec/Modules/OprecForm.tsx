@@ -183,7 +183,14 @@ export default function OprecForm({ closeAt }: { closeAt: Date }) {
           </Field>
         </div>
 
-        <Field id="cv" label="Upload CV (PDF, maks. 2MB)" error={errors.cv || cvFileError || undefined}>
+        <Field
+          id="cv"
+          label="Upload berkas pendaftaran (PDF, maks. 2MB)"
+          error={errors.cv || cvFileError || undefined}
+        >
+          <p className="text-xs font-semibold text-foreground/60 -mt-1">
+            Berisi: CV, Sertifikat KSI, Sertifikat Pendukung, dan Deskripsi Diri
+          </p>
           <div className="space-y-2">
             <label
               htmlFor="cv"
