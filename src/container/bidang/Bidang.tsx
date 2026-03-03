@@ -23,11 +23,13 @@ const Divisi = () => {
                 }}
                 className="mb-14"
             >
-                <h2
-                    className="bg-clip-text text-transparent text-3xl md:text-5xl font-bold text-center mb-4"
-                    style={{ backgroundImage: "linear-gradient(90deg, #d3a32d 0%, #d3a32d 40%, #5a9fd4 70%)" }}
-                >
-                    Bidang
+                <h2 className="text-3xl md:text-5xl font-bold text-center mb-4">
+                    <span
+                        className="bg-clip-text text-transparent "
+                        style={{ backgroundImage: "linear-gradient(90deg, #f0c96a 0%, #d3a32d 40%, #5a9fd4 70%)" }}
+                    >
+                        Bidang
+                    </span>
                 </h2>
                 <p className="text-center text-muted-foreground max-w-2xl mx-auto">
                     Bidang dan divisi di HIMSI yang siap mengembangkan potensi dan bakatmu

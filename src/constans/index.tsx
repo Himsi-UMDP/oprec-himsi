@@ -157,24 +157,62 @@ export const timeline: Timeline[] = [
 
 export const faqs: Faq[] = [
     {
-        id: "siapa-boleh-daftar",
-        q: "Siapa saja yang boleh mendaftar Open Recruitment HIMSI?",
-        a: "Mahasiswa aktif minimal semester 2 dan maksimal semester 4 diperbolehkan mendaftar. Pastikan siap mengikuti rangkaian seleksi sampai selesai.",
+        id: "siapa-bisa-daftar",
+        q: "Siapa saja yang bisa mendaftar oprec HIMSI?",
+        a: "Seluruh mahasiswa aktif Program Studi Sistem Informasi dengan minimal semester 2 dan maksimal semester 4 dapat mendaftar.",
     },
     {
-        id: "syarat-berkas",
-        q: "Apa saja syarat dan berkas yang perlu disiapkan?",
-        a: "Siapkan data diri sesuai form pendaftaran dan berkas pendukung yang diminta. Pastikan semua informasi diisi lengkap dan benar agar lolos tahap seleksi berkas.",
+        id: "pengalaman-organisasi",
+        q: "Apakah harus punya pengalaman organisasi sebelumnya?",
+        a: "Tidak harus. HIMSI terbuka untuk semua mahasiswa, baik yang sudah berpengalaman maupun yang ingin belajar dari nol.",
     },
     {
-        id: "proses-seleksi",
-        q: "Bagaimana proses seleksi Open Recruitment HIMSI?",
-        a: "Proses seleksi terdiri dari 3 tahap: seleksi berkas, wawancara (sekalian pada tahap berikutnya), dan pengumuman akhir. Detail informasi tiap tahap akan dikirimkan melalui WAG.",
+        id: "syarat-oprec",
+        q: "Apa saja syarat mengikuti oprec?",
+        a: [
+            "Mahasiswa aktif (min sem 2, maks sem 4),",
+            "Pernah mengikuti KSI,",
+            "Membuat CV semenarik mungkin,",
+            "Memiliki sertifikat/dokumen pendukung sesuai bidang (jika ada),",
+            "Bertanggung jawab, disiplin, dan memiliki komitmen tinggi,",
+            "Menuliskan deskripsi diri minimal 50 kata,",
+        ].join("\n"),
     },
     {
-        id: "pengumuman-informasi",
+        id: "berkas-pendaftaran",
+        q: "Apa saja berkas yang perlu disiapkan untuk mendaftar?",
+        a: [
+            "Deskripsi diri minimal 50 kata,",
+            "CV,",
+            "Sertifikat KSI,",
+            "Sertifikat/dokumen pendukung (jika ada),",
+        ].join("\n"),
+    },
+    {
+        id: "keuntungan-himsi",
+        q: "Apa keuntungan bergabung di HIMSI?",
+        a: [
+            "Golden Networking,",
+            "Leadership & Organizational Experience,",
+            "Sertifikat & Poin Aktivitas,",
+            "Tambahan Nilai CV & Portofolio,",
+            "Kesempatan Mengembangkan Kompetensi Akademik & Non-Akademik,",
+        ].join("\n"),
+    },
+    {
+        id: "ganggu-kuliah",
+        q: "Apakah kegiatan HIMSI mengganggu perkuliahan?",
+        a: "Tidak. Kegiatan disesuaikan dengan jadwal kuliah dan tetap mengutamakan akademik. Manajemen waktu menjadi salah satu skill yang akan kamu pelajari di organisasi.",
+    },
+    {
+        id: "info-pengumuman",
         q: "Informasi dan pengumuman seleksi dikirim melalui apa?",
-        a: "Seluruh informasi, jadwal, dan pengumuman akan disampaikan melalui WAG. Pastikan nomor yang kamu daftarkan aktif dan bisa dihubungi.",
+        a: "Seluruh informasi akan dikirim melalui Whatsapp Grup, sementara pengumuman akan dilakukan melalui email mhs yang terdaftar.",
+    },
+    {
+        id: "daftar-lagi",
+        q: "Jika tidak lolos, apakah bisa mendaftar lagi?",
+        a: "Tentu saja bisa. Biasanya oprec dibuka setiap periode kepengurusan.",
     },
 ];
 

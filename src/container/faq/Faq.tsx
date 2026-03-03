@@ -12,8 +12,8 @@ const Faq = () => {
                     className="text-center mb-12 md:mb-16"
                 >
                     <h2 className="text-3xl md:text-5xl font-bold text-center mb-2 text-[#5a9fd4]">
-                        Pertanyaan
-                        <span className="text-[#d3a32d]"> Umum</span>
+                        Pertanyaan Yang Sering
+                        <span className="text-[#d3a32d]"> Ditanyakan</span>
                     </h2>
                     <p className="text-muted-foreground text-lg">
                         Hal-hal yang sering ditanyakan seputar open recruitment
