@@ -33,7 +33,7 @@ export async function submitPendaftaran(payload: PendaftaranInsert): Promise<voi
 export async function getAllPendaftar(): Promise<PendaftaranRow[]> {
     const { data, error } = await supabase
         .from('pendaftaran')
-        .select('*')
+        .select("id, nama, npm, bidang1, bidang2, status, alasan, cv_url, created_at")
         .order('created_at', { ascending: false })
 
     if (error) throw new Error(error.message)
