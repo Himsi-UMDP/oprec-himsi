@@ -2,7 +2,6 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 import { hero } from "@/constans";
 import {
     containerVariants,
@@ -67,7 +66,7 @@ const Hero = () => {
                         <a href={primaryCTA.href}>{primaryCTA.label}</a>
                     </Button>
                     <Button variant="outline" size="lg" className="text-lg px-8 py-6 border-primary/30 hover:bg-primary/10" asChild>
-                        <Link to={secondaryCTA.href}>{secondaryCTA.label}</Link>
+                        <a href={secondaryCTA.href} target="_blank" rel="noopener noreferrer">{secondaryCTA.label}</a>
                     </Button>
                 </motion.div>
             </motion.div>

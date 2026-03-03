@@ -3,6 +3,8 @@ import type { PendaftaranRow } from "@/lib/supabase";
 export type StatusFilter = "semua" | PendaftaranRow["status"];
 export type BidangFilter = "semua" | string;
 
+export type SortOrder = "terbaru" | "terlama" | "nama_az" | "nama_za";
+
 export type BidangStat = {
     name: string;
     count: number;

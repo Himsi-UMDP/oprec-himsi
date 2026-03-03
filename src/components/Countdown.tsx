@@ -1,4 +1,4 @@
-import type { TimeParts } from "@/hooks/useOprecSchedule";
+import type { TimeParts } from "@/constans/oprec.type";
 import { cn } from "@/lib/utils";
 
 function pad2(n: number) {

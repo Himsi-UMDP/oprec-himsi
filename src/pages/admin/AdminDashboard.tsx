@@ -12,16 +12,13 @@ export default function AdminDashboard() {
     <div className="min-h-screen bg-gray-50 flex">
       <Sidebar onLogout={handleLogout} activePage="dashboard" />
 
-      <main className="flex-1 md:ml-56 p-5 md:p-8 space-y-6">
+      <main className="flex-1 md:ml-56 p-5 md:p-8 space-y-6 pt-20 pb-24 md:pt-8 md:pb-8">
 
-        <DashboardHeader loading={loading} onRefresh={fetchData} onLogout={handleLogout} />
+        <DashboardHeader loading={loading} onRefresh={fetchData} />
 
         <div className="bg-gradient-to-r from-[#2464a8] to-[#5a9fd4] rounded-2xl p-6 text-white">
           <p className="text-xs font-bold opacity-70 uppercase tracking-wider mb-1">Selamat Datang</p>
           <h1 className="text-xl font-extrabold">Admin HIMSI UMDP</h1>
-          <p className="text-sm opacity-80 font-semibold mt-1">
-            Open Recruitment 2026 · Pantau perkembangan pendaftar dari sini
-          </p>
         </div>
 
         <div>

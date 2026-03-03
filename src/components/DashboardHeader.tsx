@@ -4,7 +4,6 @@ import { Button } from "./ui/button";
 type Props = {
     loading: boolean;
     onRefresh: () => void;
-    onLogout: () => void;
 };
 
 export default function DashboardHeader({ loading, onRefresh }: Props) {
