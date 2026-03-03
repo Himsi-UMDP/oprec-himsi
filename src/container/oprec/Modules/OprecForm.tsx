@@ -1,12 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+// import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Combobox } from "@/components/ui/combobox";
-
 import { ANGKATAN_OPTIONS, BIDANG_OPTIONS } from "@/constans/oprec";
 import type { OprecForm } from "@/constans/oprec.type";
-import { formatWIB } from "@/lib/oprec";
+// import { formatWIB } from "@/lib/oprec";
 import Field from "./Field";
 import { useOprecForm } from "@/hooks/useOprecForm";
 
@@ -17,7 +16,7 @@ export default function OprecForm({ closeAt }: { closeAt: Date }) {
         ...payload,
         cv: payload.cv?.name,
       });
-      alert("Pendaftaran berhasil dikirim ✅ (backend belum dihubungkan)");
+      alert("Pendaftaran berhasil dikirim (backend belum dihubungkan)");
     }
   );
 
@@ -26,13 +25,13 @@ export default function OprecForm({ closeAt }: { closeAt: Date }) {
 
   return (
     <div className="space-y-6 relative overflow-visible">
-      <Alert className="bg-white/70 border-black/10">
-        <AlertTitle>Pendaftaran sedang dibuka ✅</AlertTitle>
+      {/* <Alert className="bg-white/70 border-black/10">
+        <AlertTitle>Pendaftaran sedang dibuka</AlertTitle>
         <AlertDescription>
           Ditutup pada <b>{formatWIB(closeAt)}</b>. Gunakan email{" "}
           <b>@mhs.mdp.ac.id</b>.
         </AlertDescription>
-      </Alert>
+      </Alert> */}
 
       <form onSubmit={onSubmit} className="grid gap-6" noValidate>
         <Field id="nama" label="Nama" error={errors.nama}>

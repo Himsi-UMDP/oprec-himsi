@@ -16,7 +16,7 @@ export default function BeforeOpenView({
                 Dibuka pada: <span className="font-semibold">{formatWIB(openAt)}</span>
             </p>
 
-            <Countdown label="Menuju pembukaan pendaftaran" parts={remaining} />
+            <Countdown label="" parts={remaining} />
         </div>
     );
 }

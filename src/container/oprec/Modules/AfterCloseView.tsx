@@ -17,7 +17,7 @@ export default function AfterCloseView({
                 <span className="font-semibold">{formatWIB(announceAt)}</span>
             </p>
 
-            <Countdown label="Menuju waktu pengumuman" parts={remaining} />
+            <Countdown label="" parts={remaining} />
 
             <div className="rounded-2xl border border-black/10 bg-white/70 p-4 text-left">
                 <p className="font-semibold">Catatan</p>
