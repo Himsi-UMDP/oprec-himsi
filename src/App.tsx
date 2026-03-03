@@ -1,7 +1,6 @@
 import './index.css'
 import { Routes, Route } from 'react-router-dom'
 
-// Landing page sections
 import Navbar from './components/Navbar'
 import Hero from './container/home/Hero'
 import Bidang from './container/bidang/Bidang'
@@ -11,8 +10,10 @@ import Faq from './container/faq/Faq'
 import Footer from './components/Footer'
 import Oprec from './container/oprec/OprecFlow'
 
-import AdminLoginPage from './pages/admin/AdminLogin'
-import AdminDashboardPage from './pages/admin/AdminDashboard'
+import AdminLogin     from './pages/admin/AdminLogin'
+import AdminDashboard from './pages/admin/AdminDashboard'
+import AdminPendaftar from './pages/admin/AdminPendaftar'
+import AdminDiterima  from './pages/admin/AdminDiterima'
 
 function LandingPage() {
   return (
@@ -32,12 +33,12 @@ function LandingPage() {
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<LandingPage />} />
-
-      <Route path="/admin/login" element={<AdminLoginPage />} />
-      <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
-
-      <Route path="*" element={<LandingPage />} />
+      <Route path="/"                  element={<LandingPage />}    />
+      <Route path="/admin/login"       element={<AdminLogin />}     />
+      <Route path="/admin/dashboard"   element={<AdminDashboard />} />
+      <Route path="/admin/pendaftar"   element={<AdminPendaftar />} />
+      <Route path="/admin/diterima"    element={<AdminDiterima />}  />
+      <Route path="*"                  element={<LandingPage />}    />
     </Routes>
   )
 }

@@ -29,7 +29,7 @@ export const SCROLL_THRESHOLD = 50;
 
 export const navlink: NavItem[] = [
     { name: "Home", href: "#home" },
-    { name: "Pengumuman", href: "#pengumuman" },
+    { name: "Pengumuman", href: "#oprec" },
     { name: "Bidang", href: "#bidang" },
 ];
 
@@ -49,7 +49,7 @@ export const hero: Hero = {
         "Himpunan Mahasiswa Sistem Informasi UMDP membuka kesempatan bagi kamu yang ingin berkontribusi, berkembang, dan menciptakan dampak nyata di kampus. Pendaftaran dibuka, Jangan lewatkan!",
     primaryCTA: {
         label: "Daftar Sekarang",
-        href: "/daftar",
+        href: "#oprec",
     },
     secondaryCTA: {
         label: "Guide Book",
@@ -131,7 +131,7 @@ export const prokers: Proker[] = [
 export const timeline: Timeline[] = [
     {
         id: "Pendaftaran Online",
-        date: "03 - 12 Maret 2026",
+        date: "04 - 12 Maret 2026",
         title: "Pembukaan Pendaftaran",
         desc: "Isi formulir pendaftaran onlinedan upload berkas yang diperlukan.",
     },
@@ -143,7 +143,7 @@ export const timeline: Timeline[] = [
     },
     {
         id: "pengumuman",
-        date: "15 Maret 2026",
+        date: "16 Maret 2026",
         title: "Pengumuman",
         desc: "Hasil seleksi akhir diumumkan melalui website dan media sosial.",
     },

@@ -4,26 +4,25 @@ import Sidebar from "@/components/Sidebar";
 import DashboardHeader from "@/components/DashboardHeader";
 import StatCard from "@/components/StatCard";
 import BidangCard from "@/components/BidangCard";
-import TableFilter from "@/components/TableFilter";
-import PendaftarTable from "@/components/PendaftarTable";
 
 export default function AdminDashboard() {
-  const {
-    loading, error, stats, filtered,
-    statusFilter, setStatusFilter,
-    bidangFilter, setBidangFilter,
-    updatingId, downloadingId,
-    handleStatusChange, handleDownloadCV,
-    handleLogout, fetchData,
-  } = useDashboard();
+  const { loading, stats, handleLogout, fetchData } = useDashboard();
 
   return (
     <div className="min-h-screen bg-gray-50 flex">
-      <Sidebar onLogout={handleLogout} />
+      <Sidebar onLogout={handleLogout} activePage="dashboard" />
 
       <main className="flex-1 md:ml-56 p-5 md:p-8 space-y-6">
 
         <DashboardHeader loading={loading} onRefresh={fetchData} onLogout={handleLogout} />
+
+        <div className="bg-gradient-to-r from-[#2464a8] to-[#5a9fd4] rounded-2xl p-6 text-white">
+          <p className="text-xs font-bold opacity-70 uppercase tracking-wider mb-1">Selamat Datang</p>
+          <h1 className="text-xl font-extrabold">Admin HIMSI UMDP</h1>
+          <p className="text-sm opacity-80 font-semibold mt-1">
+            Open Recruitment 2026 · Pantau perkembangan pendaftar dari sini
+          </p>
+        </div>
 
         <div>
           <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Ringkasan</p>
@@ -42,9 +41,7 @@ export default function AdminDashboard() {
         </div>
 
         <div>
-          <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">
-            Pendaftar Per Bidang
-          </p>
+          <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Pendaftar Per Bidang</p>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {stats.perBidang.map(b => (
               <BidangCard key={b.name} stat={b} />
@@ -52,47 +49,32 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-
-          <div className="px-5 py-4 border-b border-gray-100 flex items-center justify-between">
-            <div>
-              <h2 className="text-sm font-extrabold text-gray-800">Data Pendaftar</h2>
-              <p className="text-xs text-gray-400 font-semibold mt-0.5">
-                Kelola status penerimaan setiap pendaftar
-              </p>
-            </div>
+        <div>
+          <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Akses Cepat</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <a
+              href="/admin/pendaftar"
+              className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex items-center gap-4 hover:shadow-md hover:border-[#2464a8]/30 transition-all group"
+            >
+              <div className="w-11 h-11 rounded-xl bg-blue-100 flex items-center justify-center text-xl group-hover:bg-blue-200 transition-colors">👥</div>
+              <div>
+                <p className="font-bold text-gray-800 text-sm">Lihat Semua Pendaftar</p>
+                <p className="text-xs text-gray-400 font-semibold mt-0.5">{stats.total} pendaftar terdaftar</p>
+              </div>
+              <span className="ml-auto text-gray-300 group-hover:text-[#2464a8] transition-colors text-lg">→</span>
+            </a>
+            <a
+              href="/admin/diterima"
+              className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 flex items-center gap-4 hover:shadow-md hover:border-green-300 transition-all group"
+            >
+              <div className="w-11 h-11 rounded-xl bg-green-100 flex items-center justify-center text-xl group-hover:bg-green-200 transition-colors">✅</div>
+              <div>
+                <p className="font-bold text-gray-800 text-sm">Pendaftar Diterima</p>
+                <p className="text-xs text-gray-400 font-semibold mt-0.5">{stats.diterima} anggota baru</p>
+              </div>
+              <span className="ml-auto text-gray-300 group-hover:text-green-500 transition-colors text-lg">→</span>
+            </a>
           </div>
-
-          <TableFilter
-            statusFilter={statusFilter}
-            bidangFilter={bidangFilter}
-            onStatusChange={setStatusFilter}
-            onBidangChange={setBidangFilter}
-            total={filtered.length}
-          />
-
-          {error && (
-            <div className="px-5 py-3 bg-red-50 border-b border-red-100">
-              <p className="text-sm font-semibold text-red-600">⚠️ {error}</p>
-            </div>
-          )}
-
-          <PendaftarTable
-            rows={filtered}
-            loading={loading}
-            updatingId={updatingId}
-            downloadingId={downloadingId}
-            onStatusChange={handleStatusChange}
-            onDownloadCV={handleDownloadCV}
-          />
-
-          {!loading && filtered.length > 0 && (
-            <div className="px-5 py-3 border-t border-gray-100 bg-gray-50/50">
-              <p className="text-xs text-gray-400 font-semibold">
-                Menampilkan {filtered.length} dari {stats.total} pendaftar
-              </p>
-            </div>
-          )}
         </div>
 
       </main>

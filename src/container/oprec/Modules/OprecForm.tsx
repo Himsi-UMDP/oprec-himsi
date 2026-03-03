@@ -5,7 +5,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Combobox } from "@/components/ui/combobox";
 import { ANGKATAN_OPTIONS, BIDANG_OPTIONS } from "@/constans/oprec";
 import type { OprecForm } from "@/constans/oprec.type";
-import { formatWIB } from "@/lib/oprec";
 import Field from "./Field";
 import { useOprecForm } from "@/hooks/useOprecForm";
 import { uploadCV, submitPendaftaran } from "@/services/pendaftaran";
@@ -85,14 +84,15 @@ export default function OprecForm({ closeAt }: { closeAt: Date }) {
           </p>
           <p className="text-sm font-semibold text-foreground/60 max-w-sm">
             Data kamu sudah kami terima. Informasi selanjutnya akan dikirimkan
-            melalui WAG. Pastikan nomor HP kamu aktif.
+            melalui WAG. Pastikan kamu bergabung di grup WhatsApp berikut.
           </p>
         </div>
         <div className="rounded-xl border border-black/10 bg-white/60 px-5 py-4 text-left w-full max-w-sm">
-          <p className="text-xs font-semibold text-foreground/50 mb-1">
-            Pendaftaran ditutup
+          <p className="text-xs font-semibold text-foreground mb-1">
+            <a href="https://chat.whatsapp.com/I1XeCV1CF0T4cKAYXz98FJ?mode=gi_t" target="_blank" rel="noopener noreferrer">
+              https://chat.whatsapp.com/I1XeCV1CF0T4cKAYXz98FJ?mode=gi_t
+            </a>
           </p>
-          <p className="text-sm font-semibold">{formatWIB(closeAt)}</p>
         </div>
       </div>
     );

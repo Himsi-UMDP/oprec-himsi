@@ -45,7 +45,7 @@ const Navbar = () => {
                 </div>
 
                 <Button asChild className="hidden md:flex ml-2">
-                    <a href="#daftar">Daftar</a>
+                    <a href="#oprec">Daftar</a>
                 </Button>
 
                 <button

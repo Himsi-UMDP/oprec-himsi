@@ -64,7 +64,7 @@ const Hero = () => {
                     className="flex flex-col sm:flex-row gap-4 justify-center pt-4"
                 >
                     <Button size="lg" className="text-lg px-8 py-6 glow animate-pulse-glow" asChild>
-                        <Link to={primaryCTA.href}>{primaryCTA.label}</Link>
+                        <a href={primaryCTA.href}>{primaryCTA.label}</a>
                     </Button>
                     <Button variant="outline" size="lg" className="text-lg px-8 py-6 border-primary/30 hover:bg-primary/10" asChild>
                         <Link to={secondaryCTA.href}>{secondaryCTA.label}</Link>
