@@ -2,9 +2,10 @@ import { useEffect, useState, useMemo, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/lib/supabase";
 import type { PendaftaranRow } from "@/lib/supabase";
-import { getAllPendaftar, updateStatus, getCVSignedUrl } from "@/services/pendaftaran";
+import { getAllPendaftar, updateStatus, getCVSignedUrl, deletePendaftar } from "@/services/pendaftaran";
 import { BIDANG_CONFIG } from "@/constans";
 import type { StatusFilter, BidangFilter, SortOrder, DashboardStats } from "@/constans/admin";
+
 
 export function useDashboard() {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ export function useDashboard() {
   const [sortOrder, setSortOrder]         = useState<SortOrder>("terbaru");
   const [updatingId, setUpdatingId]       = useState<string | null>(null);
   const [downloadingId, setDownloadingId] = useState<string | null>(null);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -100,6 +102,23 @@ export function useDashboard() {
     }
   }, []);
 
+  const handleDelete = useCallback(async (row: PendaftaranRow) => {
+    const ok = window.confirm(
+      `Hapus pendaftar ini?\n\nNama: ${row.nama}\nNPM: ${row.npm}\n\nData & CV akan terhapus permanen.`
+    );
+    if (!ok) return;
+
+    setDeletingId(row.id);
+    try {
+      await deletePendaftar(row);
+      setData(prev => prev.filter(d => d.id !== row.id));
+    } catch (err) {
+      alert(err instanceof Error ? err.message : "Gagal menghapus data.");
+    } finally {
+      setDeletingId(null);
+    }
+  }, []);
+
   const handleLogout = useCallback(async () => {
     await supabase.auth.signOut();
     navigate("/admin/login");
@@ -111,8 +130,8 @@ export function useDashboard() {
     statusFilter, setStatusFilter,
     bidangFilter, setBidangFilter,
     sortOrder, setSortOrder,
-    updatingId, downloadingId,
-    handleStatusChange, handleDownloadCV,
+    updatingId, downloadingId, deletingId,
+    handleStatusChange, handleDownloadCV, handleDelete,
     handleLogout, fetchData,
   };
 }

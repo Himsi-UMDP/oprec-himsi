@@ -12,8 +12,8 @@ export default function AdminPendaftar() {
     statusFilter, setStatusFilter,
     bidangFilter, setBidangFilter,
     sortOrder, setSortOrder,
-    updatingId, downloadingId,
-    handleStatusChange, handleDownloadCV,
+    updatingId, downloadingId, deletingId,
+    handleStatusChange, handleDownloadCV, handleDelete,
     handleLogout, fetchData,
   } = useDashboard();
 
@@ -39,7 +39,16 @@ export default function AdminPendaftar() {
           </div>
           <TableFilter statusFilter={statusFilter} bidangFilter={bidangFilter} sortOrder={sortOrder} onStatusChange={setStatusFilter} onBidangChange={setBidangFilter} onSortChange={setSortOrder} total={filtered.length} />
           {error && <div className="px-5 py-3 bg-red-50 border-b border-red-100"><p className="text-sm font-semibold text-red-600">⚠️ {error}</p></div>}
-          <PendaftarTable rows={filtered} loading={loading} updatingId={updatingId} downloadingId={downloadingId} onStatusChange={handleStatusChange} onDownloadCV={handleDownloadCV} />
+          <PendaftarTable
+            rows={filtered}
+            loading={loading}
+            updatingId={updatingId}
+            downloadingId={downloadingId}
+            deletingId={deletingId}
+            onStatusChange={handleStatusChange}
+            onDownloadCV={handleDownloadCV}
+            onDelete={handleDelete}
+          />
           {!loading && filtered.length > 0 && (
             <div className="px-5 py-3 border-t border-gray-100 bg-gray-50/50">
               <p className="text-xs text-gray-400 font-semibold">Menampilkan {filtered.length} dari {stats.total} pendaftar</p>

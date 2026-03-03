@@ -225,10 +225,11 @@ export const BIDANG_CONFIG = [
 ] as const;
 
 export const STATUS_CONFIG: Record<PendaftaranRow["status"], { label: string; className: string }> = {
-    pending:  { label: "Pending",  className: "bg-yellow-100 text-yellow-700 border border-yellow-200" },
-    diterima: { label: "Diterima", className: "bg-green-100 text-green-700 border border-green-200"   },
-    selesai:  { label: "Selesai",  className: "bg-blue-100 text-blue-700 border border-blue-200"      },
-};
+    pending:            { label: "Pending",           className: "bg-yellow-100 text-yellow-700 border border-yellow-200" },
+    diterima:           { label: "Diterima",          className: "bg-green-100 text-green-700 border border-green-200"   },
+    selesai:            { label: "Selesai",           className: "bg-blue-100 text-blue-700 border border-blue-200"      },
+    selesai_wawancara:  { label: "Selesai Wawancara", className: "bg-indigo-100 text-indigo-700 border border-indigo-200"},
+}
 
 export const STAT_CARD_CONFIG = [
     { key: "total"    as const, label: "Pendaftar Total",    iconBg: "bg-blue-100",   iconColor: "text-blue-500",   emoji: "👥" },

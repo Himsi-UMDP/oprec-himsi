@@ -1,5 +1,6 @@
 import { supabase } from '@/lib/supabase'
 import type { PendaftaranInsert, PendaftaranRow } from '@/lib/supabase'
+import { extractCvPath } from '@/lib/storagePath'
 
 
 export async function uploadCV(file: File, npm: string): Promise<string> {
@@ -20,17 +21,12 @@ export async function uploadCV(file: File, npm: string): Promise<string> {
 }
 
 
-export async function submitPendaftaran(
-    payload: PendaftaranInsert
-): Promise<PendaftaranRow> {
-    const { data, error } = await supabase
+export async function submitPendaftaran(payload: PendaftaranInsert): Promise<void> {
+    const { error } = await supabase
         .from('pendaftaran')
-        .insert(payload)
-        .select()
-        .single()
+        .insert(payload, { returning: 'minimal' })
 
     if (error) throw new Error(`Gagal menyimpan pendaftaran: ${error.message}`)
-    return data as PendaftaranRow
 }
 
 
@@ -45,16 +41,16 @@ export async function getAllPendaftar(): Promise<PendaftaranRow[]> {
 }
 
 
-export async function updateStatus(
-    id: string,
-    status: PendaftaranRow['status']
-): Promise<void> {
+export async function updateStatus(id: string, status: PendaftaranRow['status']): Promise<void> {
     const { error } = await supabase
         .from('pendaftaran')
         .update({ status })
         .eq('id', id)
 
-    if (error) throw new Error(error.message)
+    if (error) {
+        console.log("UPDATE STATUS ERROR:", error) 
+        throw new Error(error.message)
+    }
 }
 
 
@@ -65,4 +61,23 @@ export async function getCVSignedUrl(cvPath: string): Promise<string> {
 
     if (error) throw new Error(error.message)
     return data.signedUrl
+}
+
+export async function deletePendaftar(row: PendaftaranRow): Promise<void> {
+    const cvPath = extractCvPath(row.cv_url)
+
+    if (cvPath) {
+        const { error: storageErr } = await supabase.storage
+            .from('cv-pendaftar')
+            .remove([cvPath])
+
+        if (storageErr) console.warn('Gagal hapus CV:', storageErr.message)
+    }
+
+    const { error } = await supabase
+        .from('pendaftaran')
+        .delete()
+        .eq('id', row.id)
+
+    if (error) throw new Error(error.message)
 }
