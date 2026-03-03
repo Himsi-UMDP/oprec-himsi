@@ -16,7 +16,7 @@ export type BidangStat = {
 export type DashboardStats = {
     total: number;
     diterima: number;
-    ditolak: number;
+    selesai: number;
     pending: number;
     perBidang: BidangStat[];
 };

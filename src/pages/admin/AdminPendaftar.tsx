@@ -36,7 +36,6 @@ export default function AdminPendaftar() {
         <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
           <div className="px-5 py-4 border-b border-gray-100">
             <h2 className="text-sm font-extrabold text-gray-800">Daftar Pendaftar</h2>
-            <p className="text-xs text-gray-400 font-semibold mt-0.5">Kelola dan review setiap pendaftar di sini</p>
           </div>
           <TableFilter statusFilter={statusFilter} bidangFilter={bidangFilter} sortOrder={sortOrder} onStatusChange={setStatusFilter} onBidangChange={setBidangFilter} onSortChange={setSortOrder} total={filtered.length} />
           {error && <div className="px-5 py-3 bg-red-50 border-b border-red-100"><p className="text-sm font-semibold text-red-600">⚠️ {error}</p></div>}
