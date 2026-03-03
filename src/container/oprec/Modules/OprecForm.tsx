@@ -1,10 +1,10 @@
-import { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Combobox } from "@/components/ui/combobox";
 import { ANGKATAN_OPTIONS, BIDANG_OPTIONS } from "@/constans/oprec";
-import type { OprecForm } from "@/constans/oprec.type";
+import type { OprecForm, OprecErrors } from "@/constans/oprec.type";
 import Field from "./Field";
 import { useOprecForm } from "@/hooks/useOprecForm";
 import { uploadCV, submitPendaftaran } from "@/services/pendaftaran";
@@ -20,18 +20,43 @@ export default function OprecForm({ closeAt }: { closeAt: Date }) {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [cvFileError, setCvFileError] = useState<string | null>(null);
 
+  const [isClosed, setIsClosed] = useState(false);
+  useEffect(() => {
+    const check = () => setIsClosed(Date.now() >= closeAt.getTime());
+    check();
+    const t = setInterval(check, 1000);
+    return () => clearInterval(t);
+  }, [closeAt]);
+
+  type SetErrorsFn = React.Dispatch<React.SetStateAction<OprecErrors>>;
+  const setErrorsRef = useRef<SetErrorsFn | null>(null);
+
   const { form, errors, alasanCount, onChange, onSubmit, setErrors } =
     useOprecForm(async (payload) => {
+      const safeSetErrors = setErrorsRef.current;
+
+      if (isClosed) {
+        setSubmitState("error");
+        setSubmitError("Pendaftaran sudah ditutup.");
+        return;
+      }
+
       if (!payload.cv) {
-        setErrors((p) => ({ ...p, cv: "Upload CV wajib." }));
+        safeSetErrors?.((p) => ({ ...p, cv: "Upload CV wajib." }));
         return;
       }
-      if (payload.cv.type !== "application/pdf") {
-        setErrors((p) => ({ ...p, cv: "CV harus berformat PDF." }));
+
+      const isPdf =
+        payload.cv.type === "application/pdf" ||
+        payload.cv.name.toLowerCase().endsWith(".pdf");
+
+      if (!isPdf) {
+        safeSetErrors?.((p) => ({ ...p, cv: "CV harus berformat PDF." }));
         return;
       }
+
       if (payload.cv.size > MAX_FILE_SIZE_BYTES) {
-        setErrors((p) => ({
+        safeSetErrors?.((p) => ({
           ...p,
           cv: `Ukuran CV maksimal ${MAX_FILE_SIZE_MB}MB.`,
         }));
@@ -66,11 +91,15 @@ export default function OprecForm({ closeAt }: { closeAt: Date }) {
       }
     });
 
+  useEffect(() => {
+    setErrorsRef.current = setErrors;
+  }, [setErrors]);
+
   const angkatanItems = ANGKATAN_OPTIONS.map((a) => ({ value: a, label: a }));
   const bidangItems = BIDANG_OPTIONS.map((b) => ({ value: b, label: b }));
 
-  const isLoading =
-    submitState === "uploading" || submitState === "saving";
+  const isLoading = submitState === "uploading" || submitState === "saving";
+  const disabledAll = isLoading || isClosed;
 
   if (submitState === "success") {
     return (
@@ -88,8 +117,12 @@ export default function OprecForm({ closeAt }: { closeAt: Date }) {
           </p>
         </div>
         <div className="rounded-xl border border-black/10 bg-white/60 px-5 py-4 text-left w-full max-w-sm">
-          <p className="text-xs font-semibold text-foreground mb-1">
-            <a href="https://chat.whatsapp.com/I1XeCV1CF0T4cKAYXz98FJ?mode=gi_t" target="_blank" rel="noopener noreferrer">
+          <p className="text-xs font-semibold text-foreground mb-1 break-all">
+            <a
+              href="https://chat.whatsapp.com/I1XeCV1CF0T4cKAYXz98FJ?mode=gi_t"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               https://chat.whatsapp.com/I1XeCV1CF0T4cKAYXz98FJ?mode=gi_t
             </a>
           </p>
@@ -100,7 +133,12 @@ export default function OprecForm({ closeAt }: { closeAt: Date }) {
 
   return (
     <div className="space-y-6 relative overflow-visible">
-      
+      {isClosed && (
+        <div className="rounded-xl border border-destructive/30 bg-destructive/5 px-4 py-3 text-sm font-semibold text-destructive">
+          Pendaftaran sudah ditutup.
+        </div>
+      )}
+
       <form onSubmit={onSubmit} className="grid gap-6" noValidate>
         <Field id="nama" label="Nama Lengkap" error={errors.nama}>
           <Input
@@ -109,7 +147,7 @@ export default function OprecForm({ closeAt }: { closeAt: Date }) {
             onChange={(e) => onChange("nama", e.target.value)}
             placeholder="Nama lengkap sesuai KTM"
             aria-invalid={!!errors.nama}
-            disabled={isLoading}
+            disabled={disabledAll}
           />
         </Field>
 
@@ -122,9 +160,10 @@ export default function OprecForm({ closeAt }: { closeAt: Date }) {
               placeholder="Contoh: 2323xxxx"
               inputMode="numeric"
               aria-invalid={!!errors.npm}
-              disabled={isLoading}
+              disabled={disabledAll}
             />
           </Field>
+
           <Field id="angkatan" label="Angkatan" error={errors.angkatan}>
             <Combobox
               value={form.angkatan || ""}
@@ -134,16 +173,12 @@ export default function OprecForm({ closeAt }: { closeAt: Date }) {
               items={angkatanItems}
               placeholder="Pilih angkatan"
               emptyText="Angkatan tidak ditemukan"
-              disabled={isLoading}
+              disabled={disabledAll}
             />
           </Field>
         </div>
 
-        <Field
-          id="email"
-          label="Email Mahasiswa (MDP)"
-          error={errors.email}
-        >
+        <Field id="email" label="Email Mahasiswa (MDP)" error={errors.email}>
           <Input
             id="email"
             value={form.email}
@@ -152,7 +187,7 @@ export default function OprecForm({ closeAt }: { closeAt: Date }) {
             type="email"
             autoComplete="email"
             aria-invalid={!!errors.email}
-            disabled={isLoading}
+            disabled={disabledAll}
           />
         </Field>
 
@@ -166,9 +201,10 @@ export default function OprecForm({ closeAt }: { closeAt: Date }) {
               items={bidangItems}
               placeholder="Pilih bidang"
               emptyText="Bidang tidak ditemukan"
-              disabled={isLoading}
+              disabled={disabledAll}
             />
           </Field>
+
           <Field id="bidang2" label="Pilihan Bidang 2" error={errors.bidang2}>
             <Combobox
               value={form.bidang2 || ""}
@@ -178,7 +214,7 @@ export default function OprecForm({ closeAt }: { closeAt: Date }) {
               items={bidangItems}
               placeholder="Pilih bidang"
               emptyText="Bidang tidak ditemukan"
-              disabled={isLoading}
+              disabled={disabledAll}
             />
           </Field>
         </div>
@@ -191,20 +227,22 @@ export default function OprecForm({ closeAt }: { closeAt: Date }) {
           <p className="text-xs font-semibold text-foreground/60 -mt-1">
             Berisi: CV, Sertifikat KSI, Sertifikat Pendukung, dan Deskripsi Diri
           </p>
+
           <div className="space-y-2">
             <label
               htmlFor="cv"
               className={[
                 "flex items-center gap-3 w-full rounded-xl border px-4 py-3 cursor-pointer transition-colors",
                 "border-black/10 bg-white/70 hover:bg-white/90",
-                (errors.cv || cvFileError) ? "border-destructive" : "",
-                isLoading ? "opacity-60 cursor-not-allowed" : "",
+                errors.cv || cvFileError ? "border-destructive" : "",
+                disabledAll ? "opacity-60 cursor-not-allowed" : "",
               ].join(" ")}
             >
               <FileText className="w-5 h-5 text-foreground/50 shrink-0" />
               <span className="text-sm font-semibold text-foreground/60 truncate">
                 {form.cv ? form.cv.name : "Klik untuk pilih file PDF..."}
               </span>
+
               {form.cv && (
                 <button
                   type="button"
@@ -214,6 +252,7 @@ export default function OprecForm({ closeAt }: { closeAt: Date }) {
                     setCvFileError(null);
                   }}
                   className="ml-auto text-foreground/40 hover:text-destructive transition-colors"
+                  disabled={disabledAll}
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -225,22 +264,31 @@ export default function OprecForm({ closeAt }: { closeAt: Date }) {
               type="file"
               accept="application/pdf,.pdf"
               className="sr-only"
-              disabled={isLoading}
+              disabled={disabledAll}
               onChange={(e) => {
                 const file = e.target.files?.[0] ?? null;
                 setCvFileError(null);
+
                 if (file) {
-                  if (file.type !== "application/pdf") {
+                  const isPdf =
+                    file.type === "application/pdf" ||
+                    file.name.toLowerCase().endsWith(".pdf");
+
+                  if (!isPdf) {
                     setCvFileError("File harus berformat PDF.");
                     onChange("cv", null);
                     return;
                   }
+
                   if (file.size > MAX_FILE_SIZE_BYTES) {
-                    setCvFileError(`Ukuran file maksimal ${MAX_FILE_SIZE_MB}MB.`);
+                    setCvFileError(
+                      `Ukuran file maksimal ${MAX_FILE_SIZE_MB}MB.`
+                    );
                     onChange("cv", null);
                     return;
                   }
                 }
+
                 onChange("cv", file);
               }}
             />
@@ -264,7 +312,7 @@ export default function OprecForm({ closeAt }: { closeAt: Date }) {
             onChange={(e) => onChange("alasan", e.target.value)}
             placeholder="Contoh: Ingin berkembang, berkontribusi, dan belajar bersama HIMSI..."
             aria-invalid={!!errors.alasan}
-            disabled={isLoading}
+            disabled={disabledAll}
           />
         </Field>
 
@@ -277,7 +325,7 @@ export default function OprecForm({ closeAt }: { closeAt: Date }) {
         <Button
           type="submit"
           className="w-full py-6 text-base font-semibold"
-          disabled={isLoading}
+          disabled={disabledAll}
         >
           {isLoading ? (
             <span className="flex items-center gap-2">
