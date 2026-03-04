@@ -110,12 +110,12 @@ export function useDashboard() {
 
     setDeletingId(row.id);
     try {
-      await deletePendaftar(row.id);
+      await deletePendaftar(row.id); 
       setData(prev => prev.filter(d => d.id !== row.id));
     } catch (err) {
       alert(err instanceof Error ? err.message : "Gagal menghapus data.");
     } finally {
-      setDeletingId(null);
+      setDeletingId(null);  
     }
   }, []);
 
