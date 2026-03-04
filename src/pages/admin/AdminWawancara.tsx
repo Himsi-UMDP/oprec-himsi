@@ -221,7 +221,6 @@ export default function AdminWawancara() {
         <div className="bg-gradient-to-r from-[#2464a8] to-[#5a9fd4] rounded-2xl p-6 text-white">
           <p className="text-xs font-bold opacity-70 uppercase tracking-wider mb-1">Wawancara</p>
           <h1 className="text-xl font-extrabold">Penilaian Wawancara</h1>
-          <p className="text-sm opacity-80 mt-1">Nilai Admin akan tersimpan di database (tidak hilang saat refresh)</p>
         </div>
 
         <div className="flex flex-wrap gap-3 items-center">

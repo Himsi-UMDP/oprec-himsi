@@ -10,7 +10,7 @@ import { useOprecForm } from "@/hooks/useOprecForm";
 import { uploadCV, submitPendaftaran } from "@/services/pendaftaran";
 import { CheckCircle2, Loader2, FileText, X } from "lucide-react";
 
-const MAX_FILE_SIZE_MB = 2;
+const MAX_FILE_SIZE_MB = 1;
 const MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024;
 
 type SubmitState = "idle" | "uploading" | "saving" | "success" | "error";
@@ -221,7 +221,7 @@ export default function OprecForm({ closeAt }: { closeAt: Date }) {
 
         <Field
           id="cv"
-          label="Upload berkas pendaftaran (PDF, maks. 2MB)"
+          label="Upload berkas pendaftaran (PDF, maks. 1MB)"
           error={errors.cv || cvFileError || undefined}
         >
           <p className="text-xs font-semibold text-foreground/60 -mt-1">

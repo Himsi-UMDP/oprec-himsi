@@ -6,8 +6,8 @@ export default function OprecShell({ children }: { children: React.ReactNode }) 
             <div className="relative container mx-auto px-4 overflow-x-visible">
                 <Animated className="text-center space-y-3">
                     <h2 className="text-3xl md:text-5xl font-bold text-center mb-2 text-[#d3a32d]">
-                        Oprec
-                        <span className="text-[#5a9fd4]"> Himsi</span>
+                        Himsi
+                        <span className="text-[#5a9fd4]"> Oprec</span>
                     </h2>
                 </Animated>
 

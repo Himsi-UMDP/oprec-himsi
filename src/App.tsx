@@ -12,7 +12,7 @@ import AdminLogin     from './pages/admin/AdminLogin'
 import AdminDashboard from './pages/admin/AdminDashboard'
 import AdminPendaftar from './pages/admin/AdminPendaftar'
 import AdminDiterima  from './pages/admin/AdminDiterima'
-import AdminWawancara from './pages/admin/AdminWawancara'
+// import AdminWawancara from './pages/admin/AdminWawancara'
 import AdminRekap     from './pages/admin/AdminRekap'
 import InterviewerLogin from './pages/interviewer/InterviewerLogin'
 import InterviewerPanel from './pages/interviewer/InterviewerPanel'
@@ -40,7 +40,7 @@ function App() {
             <Route path="/admin/dashboard"     element={<AdminDashboard />}   />
             <Route path="/admin/pendaftar"     element={<AdminPendaftar />}   />
             <Route path="/admin/diterima"      element={<AdminDiterima />}    />
-            <Route path="/admin/wawancara"     element={<AdminWawancara />}   />
+            {/* <Route path="/admin/wawancara"     element={<AdminWawancara />}   /> */}
             <Route path="/admin/rekap"         element={<AdminRekap />}       />
             <Route path="/interviewer/login"   element={<InterviewerLogin />} />
             <Route path="/interviewer/panel"   element={<InterviewerPanel />} />

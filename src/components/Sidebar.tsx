@@ -8,7 +8,7 @@ const NAV_ITEMS = [
     { id: 'dashboard' as ActivePage, label: 'Dashboard', href: '/admin/dashboard' },
     { id: 'pendaftar' as ActivePage, label: 'Pendaftar', href: '/admin/pendaftar' },
     { id: 'diterima'  as ActivePage, label: 'Diterima',  href: '/admin/diterima'  },
-    { id: 'wawancara' as ActivePage, label: 'Wawancara', href: '/admin/wawancara' },
+    // { id: 'wawancara' as ActivePage, label: 'Wawancara', href: '/admin/wawancara' },
     { id: 'rekap'     as ActivePage, label: 'Rekap',     href: '/admin/rekap'     },
 ]
 
